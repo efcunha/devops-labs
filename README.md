@@ -2,7 +2,7 @@
 
 ## Visão geral
 
-- Este laboratório faz parte de uma série de laboratórios DevOps com projetos de amostra completa.
+- Este laboratório faz parte de um laboratórios DevOps com projetos de exemplo completo.
 
 - Tudo que você tem que fazer é seguir passo a passo para completá-lo.
 
@@ -34,17 +34,19 @@ Aqui está o que você vai criar neste laboratório!
 
 https://code.visualstudio.com/download
 
-## Prepare a conta e o usuário da AWS
+## Crie uma conta de usuário na AWS
 
-- Você precisa de uma conta AWS e um usuário IAM. Se você não tem uma conta AWS, inscreva-se, mas certifique-se de ter um cartão de pagamento internacional.
+- Você precisa de uma conta AWS e um usuário IAM. 
 
-- Para ambientes de laboratório, um usuário do IAM com a política gerenciada "AdministratorAccess" está bem. 
+- Se você não tem uma conta AWS, inscreva-se, mas certifique-se de ter um cartão de credito internacional.
+
+- Para ambientes de laboratório, um usuário do IAM com a política de gerenciamento "AdministratorAccess" já serve. 
 
 ## Registre um domínio
 
 - Este laboratório requer um domínio para configurar HTTPS! Melhor ter algum tipo de domínio de teste usado para fins de laboratório.
 
-- O domínio pode ser registrado em qualquer registrador de domínio ou direto na mesma conta AWS, dependendo de suas necessidades. 
+- O domínio pode ser registrado em qualquer provedor de domínio ou direto na mesma conta AWS, dependendo de suas necessidades. 
   Possuir um nome de domínio normalmente custará entre US$ 10 e US$ 20 por ano.
 
 - Você também precisa criar uma zona hospedada no Route53 para o domínio acima na mesma conta AWS e obter as informações de registro do NS a partir daí.
@@ -59,7 +61,9 @@ https://code.visualstudio.com/download
 
 - NOTA: Se você optar por não usar o estado remoto para uma abordagem mais simples, você pode pular esta etapa, mas certifique-se de comentar o conteúdo do arquivo "t1-02-backend.tf" mais tarde.
 
-- O estado terraform (arquivo "terraform.tfstate") também pode ser armazenado remotamente. Neste laboratório, você precisa criar um Bucket S3 com antecedência para armazenar o arquivo estatal da seguinte forma:
+- O estado terraform (arquivo "terraform.tfstate") também pode ser armazenado remotamente. 
+
+- Neste laboratório, você precisa criar um Bucket S3 com antecedência para armazenar o arquivo state da seguinte forma:
 
 ```sh
 Bucket name: devops-projects-infra-test
@@ -82,7 +86,7 @@ Partition key (Primary Key): LockID (Type as String)
 ```sh
 $ cd sua-pasta/do/seu/pc
 $ git clone https://github.com/efcunha/devops-labs.git
-$ cd 01-terraform-aws-3tier/terraform/
+$ cd devops-labs/01-terraform-aws-3tier/terraform/
 ```
 
 - Porque você terá um domínio de teste diferente, então você precisará modificar algum código para se adequar ao seu ambiente:
@@ -123,12 +127,14 @@ $ ssh-keygen -f terraform-key
 # Remember the key pair's name is "terraform-key".
 ```
 
-## Parabéns! Agora tudo deve estar pronto.
+## Parabéns! Agora tudo deve estar guase pronto, mais logo vamos descobrir.
 
-## Executar comandos terraform
+## Executando comandos terraform
 
 - Agora é hora de executar oficialmente os comandos terraform para criar o seu ambiente!
-- terraforme o primeiro comando a ser executado a fim de preparar o diretório de trabalho atual. 
+
+- terraform init é o primeiro comando a ser executado a fim de preparar o diretório de trabalho atual. 
+
 - Ele instalará plugins e módulos infantis, inicializará o backend, copiará um módulo de origem, etc.
 
 É seguro executar este comando várias vezes.
@@ -160,7 +166,7 @@ Success! The configuration is valid.
 
 - Executará as ações propostas em um plano Terraform.
 
-- No caso padrão, sem nenhum arquivo de plano salvo, a terraform aplica cria seu próprio plano de ação, da mesma forma que o "plano terraform" faria.
+- No caso padrão, sem nenhum arquivo de plano salvo, a terraform aplica cria seu próprio plano de ação, da mesma forma que o "terraform plan" faria.
 
 ```sh
 $ terraform apply
@@ -171,7 +177,7 @@ Do you want to perform these actions?
 
 Enter a value: yes
 
-Apply complete! Resources: 96 added, 0 changed, 0 destroyed.
+Apply complete! Resources: 98 added, 0 changed, 0 destroyed.
 Outputs:
 ```
 
@@ -207,7 +213,7 @@ $ ssh -i private-key/terraform-key.pem ec2-user@BastionHost-Public IPv4
 
 ## Limpar Instalação
 
-- Destruir todos os objetos remotos gerenciados por uma configuração terraform.
+- Destruir todos os objetos remotos gerenciados por uma configuração do terraform.
 
 ```sh
 $ terraform destroy
