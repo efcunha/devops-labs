@@ -116,7 +116,7 @@ zip -r my-canaryv1.zip nodejs
 ```sh
 $ cd private-key/
 
-$ ssh-keygen -f terraform-key.pem
+$ ssh-keygen -f terraform-key
 
 # Go to EC2 -> Key pairs -> Import key pair
 # and follow the guide.
@@ -178,7 +178,7 @@ Outputs:
 ## Explorar e confirmar os recursos da AWS
 
 - Verifique seu e-mail para a assinatura do SNS
-- Instâncias EC2 (1 bastião e 2 servidores web)
+- Instâncias EC2 (1 bastion e 2 servidores web)
 - Auto Scaling Groups (and Launch template)
 - Load Balancers
 - Target Groups (and Health checks)
@@ -230,7 +230,8 @@ Destroy complete! Resources: 98 destroyed.
 CloudWatch > Log groups
 CloudWatch > Alarms
 Lambda > Functions
-S3 bucket, DynamoDB
+S3 bucket
+DynamoDB
 ```
 
 - e também os seguintes arquivos locais:
