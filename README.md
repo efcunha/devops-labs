@@ -12,9 +12,11 @@
 
 - Use o Terraform para configurar a infraestrutura na AWS.
 
-- A infraestrutura inclui VPC, GATEWAY NAT, grupo de segurança, grupo de escalação automática, EC2, ALB, IP Elástico e Gerente de Certificados (certificados SSL/TLS).
+- A infraestrutura inclui VPC, NAT gateway, security group, Auto Scaling group, EC2, ALB, Elastic IP, and Certificate Manager (SSL/TLS certificates).
 
-Observe que esta é uma arquitetura de rede VPC de 3 níveis. Contamos com o módulo Terraform "terraform-aws-modules/vpc/aws" para criar a maioria dos componentes de rede aqui.
+- Observe que esta é uma arquitetura de rede VPC de 3 níveis. 
+
+- Contamos com o módulo Terraform "terraform-aws-modules/vpc/aws" para criar a maioria dos componentes de rede aqui.
 
 ## Diagrama de arquitetura
 
@@ -34,7 +36,7 @@ https://code.visualstudio.com/download
 
 ## Prepare a conta e o usuário da AWS
 
-- Você precisa de uma conta AWS e um usuário IAM (console e acesso programático). Se você não tem uma conta AWS, inscreva-se para ela, mas certifique-se de ter um cartão de pagamento internacional.
+- Você precisa de uma conta AWS e um usuário IAM. Se você não tem uma conta AWS, inscreva-se, mas certifique-se de ter um cartão de pagamento internacional.
 
 - Para ambientes de laboratório, um usuário do IAM com a política gerenciada "AdministratorAccess" está bem. 
 
@@ -42,7 +44,8 @@ https://code.visualstudio.com/download
 
 - Este laboratório requer um domínio para configurar HTTPS! Melhor ter algum tipo de domínio de teste usado para fins de laboratório.
 
-- O domínio pode ser registrado em qualquer registrador de domínio ou direito na mesma conta AWS, dependendo de suas necessidades. Possuir um nome de domínio normalmente custará entre US$ 10 e US$ 20 por ano.
+- O domínio pode ser registrado em qualquer registrador de domínio ou direto na mesma conta AWS, dependendo de suas necessidades. 
+  Possuir um nome de domínio normalmente custará entre US$ 10 e US$ 20 por ano.
 
 - Você também precisa criar uma zona hospedada no Route53 para o domínio acima na mesma conta AWS e obter as informações de registro do NS a partir daí.
 
