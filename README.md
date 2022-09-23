@@ -24,10 +24,9 @@ Aqui está o que você vai criar neste laboratório!
 
 ## Pré-requisitos
 
-- Instalar o Terraform
-- Instalar o AWS CLI
-- Configurar o AWS CLI
-- Configurar o Terraform
+- [Instalar o Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli)
+- [Instalar o AWS CLI](https://docs.aws.amazon.com/pt_br/cli/latest/userguide/getting-started-install.html)
+- [Configurar o AWS CLI](https://docs.aws.amazon.com/pt_br/cli/latest/userguide/cli-chap-configure.html)
 
 ## Instalar visual Studio Code:
 
