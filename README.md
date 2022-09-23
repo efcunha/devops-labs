@@ -178,7 +178,7 @@ Outputs:
 ## Explorar e confirmar os recursos da AWS
 
 - Verifique seu e-mail para a assinatura do SNS
-- Instâncias EC2 (1 bastião e 2 servidores web)
+- Instâncias EC2 (1 bastion e 2 servidores web)
 - Auto Scaling Groups (and Launch template)
 - Load Balancers
 - Target Groups (and Health checks)
