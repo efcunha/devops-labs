@@ -78,7 +78,7 @@ Partition key (Primary Key): LockID (Type as String)
 - Aqui está o código fonte para conferir:
 
 ```sh
-$ cd somewhere/on/your/pc
+$ cd sua-pasta/do/seu/pc
 $ git clone https://github.com/efcunha/devops-labs.git
 $ cd 01-terraform-aws-3tier/terraform/
 ```
@@ -102,19 +102,19 @@ $ cd 01-terraform-aws-3tier/terraform/
   const urls = ['https://devops01.your-domain.com']; // change this!
 ```
 
-- Depois de mudar meu canário.js, você precisa re-executar o seguinte comando:
+- Depois de mudar meu canary.js, você precisa re-executar o seguinte comando:
 
 ```sh
 cd my-canary
 zip -r my-canaryv1.zip nodejs
 ```
 
-- Em seguida, você precisa criar um par-chave chamado "chave terraform" em sua conta AWS (usado para fazer login na sua instância EC2 mais tarde):
+- Em seguida, você precisa criar um par-chave chamado "terraform-key" em sua conta AWS (usado para fazer login na sua instância EC2 mais tarde):
 
 ```sh
 $ cd private-key/
 
-$ ssh-keygen -f terraform-key.pem -y | pbcopy
+$ ssh-keygen -f terraform-key.pem
 
 # Go to EC2 -> Key pairs -> Import key pair
 # and follow the guide.
