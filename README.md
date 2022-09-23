@@ -55,28 +55,35 @@ imagem
 
 - NOTA: Se você optar por não usar o estado remoto para uma abordagem mais simples, você pode pular esta etapa, mas certifique-se de comentar o conteúdo do arquivo "t1-02-backend.tf" mais tarde.
 
-- O estado terraform (arquivo "terraform.tfstate") também pode ser armazenado remotamente. Neste laboratório, você precisa criar um balde AWS S3 com antecedência para armazenar o arquivo estatal da seguinte forma:
-...
+- O estado terraform (arquivo "terraform.tfstate") também pode ser armazenado remotamente. Neste laboratório, você precisa criar um Bucket S3 com antecedência para armazenar o arquivo estatal da seguinte forma:
+
+...sh
 Bucket name: devops-projects-infra-test
 Region: US-East (N.Virginia) us-east-1
 Bucket Versioning: Enable
 Create folder: dev/devops-01
 ...
+
 - Em seguida, crie uma tabela Dínamo DB que é usada para bloqueio de estado:
+
 ...
 Table Name: dev-devops-01
 Partition key (Primary Key): LockID (Type as String)
 ...
+
 ## Confira o código-fonte
 
 - Aqui está o código fonte para conferir:
-...
+
+...sh
 $ cd somewhere/on/your/pc
-$ git clone git@github.com:cybersecmas/devops-labs.git
+$ git clone https://github.com/efcunha/devops-labs.git
 $ cd 01-terraform-aws-3tier/terraform/
 ...
+
 - Porque você terá um domínio de teste diferente, então você precisará modificar algum código para se adequar ao seu ambiente:
 
+...
 # File t06-02-datasource-route53-zone.tf
   name   = "your-domain.com"
 
@@ -91,14 +98,18 @@ $ cd 01-terraform-aws-3tier/terraform/
 
 # File my-canary/nodejs/node_modules/my-canary.js
     const urls = ['https://devops01.your-domain.com']; // change this!
+...
 
 - Depois de mudar meu canário.js, você precisa re-executar o seguinte comando:
-...
+
+...sh
 cd my-canary
 zip -r my-canaryv1.zip nodejs
 ...
+
 - Em seguida, você precisa criar um par-chave chamado "chave terraform" em sua conta AWS (usado para fazer login na sua instância EC2 mais tarde):
-...
+
+...sh
 $ cd private-key/
 
 $ ssh-keygen -f terraform-key.pem -y | pbcopy
@@ -107,6 +118,7 @@ $ ssh-keygen -f terraform-key.pem -y | pbcopy
 # and follow the guide.
 # Remember the key pair's name is "terraform-key".
 ...
+
 ## Parabéns! Agora tudo deve estar pronto.
 
 ## Executar comandos terraform
@@ -116,7 +128,8 @@ $ ssh-keygen -f terraform-key.pem -y | pbcopy
 - Ele instalará plugins e módulos infantis, inicializará o backend, copiará um módulo de origem, etc.
 
 É seguro executar este comando várias vezes.
-...
+
+...sh
 $ terraform init
 
 Terraform has been successfully initialized!
@@ -127,10 +140,13 @@ Terraform has been successfully initialized!
 - Verificará se uma configuração é sintáticamente válida e internamente consistente, independentemente de quaisquer variáveis fornecidas ou estado existente.
 
 - É seguro executar este comando automaticamente, por exemplo, como uma verificação pós-salvamento em um editor de texto ou como um passo de teste para um módulo reutilizável em um sistema DE CI.
-...
+
+...sh
 $ terraform validate
 Success! The configuration is valid.
+
 ...
+
 ## Terraform plan
 
 - Ele criará um plano de execução, que permite visualizar as mudanças que a Terraform planeja fazer à sua infraestrutura.
@@ -142,7 +158,8 @@ Success! The configuration is valid.
 - Executará as ações propostas em um plano Terraform.
 
 - No caso padrão, sem nenhum arquivo de plano salvo, a terraform aplica cria seu próprio plano de ação, da mesma forma que o "plano terraform" faria.
-...
+
+...sh
 $ terraform apply
 
 Do you want to perform these actions?
@@ -172,13 +189,17 @@ https://devops01.your-domain.com/app1/
 https://devops01.your-domain.com/app1/metadata.html
 
 - Baixe o arquivo de estado remoto, se necessário:
+
 ...
 $ terraform state pull
 ...
+
 # Faça login na instância Bastião:
+
 ...
 $ ssh -i private-key/terraform-key.pem ec2-user@BastionHost-Public IPv4
 ...
+
 ## Limpar Instalação
 
 - Destruir todos os objetos remotos gerenciados por uma configuração terraform.
@@ -193,25 +214,29 @@ Do you really want to destroy all resources?
   There is no undo. Only 'yes' will be accepted to confirm.
 
 Enter a value: yes
-...
 
 Releasing state lock. This may take a few moments...
 Destroy complete! Resources: 98 destroyed.
+...
 
 ## Alguns recursos AWS que você tem que excluir manualmente:
+
 ...
 CloudWatch > Log groups
 CloudWatch > Alarms
 Lambda > Functions
 S3 bucket, DynamoDB
 ...
+
 - e também os seguintes arquivos locais:
 
 ## Delete Files
+
 ...
 rm -rf .terraform*
 rm -rf terraform.tfstate*
 ...
+
 ## Conclusão
 
 Parabéns por completar o laboratório. Não é fácil entender do que se trata, mas passando por todos os passos você aprendeu muito.
