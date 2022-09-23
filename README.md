@@ -188,7 +188,9 @@ Outputs:
 - Acesse o domínio do serviço:
 
 https://devops01.your-domain.com/
+
 https://devops01.your-domain.com/app1/
+
 https://devops01.your-domain.com/app1/metadata.html
 
 - Baixe o arquivo de estado remoto, se necessário:
