@@ -230,7 +230,8 @@ Destroy complete! Resources: 98 destroyed.
 CloudWatch > Log groups
 CloudWatch > Alarms
 Lambda > Functions
-S3 bucket, DynamoDB
+S3 bucket
+DynamoDB
 ```
 
 - e também os seguintes arquivos locais:
