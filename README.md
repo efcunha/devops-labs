@@ -199,7 +199,7 @@ https://devops01.your-domain.com/app1/metadata.html
 $ terraform state pull
 ```
 
-# Faça login na instância Bastião:
+# Faça login na instância Bastion:
 
 ```sh
 $ ssh -i private-key/terraform-key.pem ec2-user@BastionHost-Public IPv4
