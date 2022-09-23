@@ -245,4 +245,6 @@ rm -rf terraform.tfstate*
 
 ## Conclusão
 
-Parabéns por completar o laboratório. Não é fácil entender do que se trata, mas passando por todos os passos você aprendeu muito.
+Parabéns por completar o laboratório. 
+
+Não é fácil entender do que se trata, mas passando por todos os passos você aprendeu muito.
