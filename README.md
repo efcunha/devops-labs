@@ -68,7 +68,7 @@ Bucket Versioning: Enable
 Create folder: dev/devops-01
 ```
 
-- Em seguida, crie uma tabela Dínamo DB que é usada para bloqueio de estado:
+- Em seguida, crie uma tabela DynamoDB que é usada para bloqueio de estado:
 
 ```sh
 Table Name: dev-devops-01
