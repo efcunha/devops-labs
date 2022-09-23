@@ -116,7 +116,7 @@ zip -r my-canaryv1.zip nodejs
 ```sh
 $ cd private-key/
 
-$ ssh-keygen -f terraform-key.pem
+$ ssh-keygen -f terraform-key
 
 # Go to EC2 -> Key pairs -> Import key pair
 # and follow the guide.
