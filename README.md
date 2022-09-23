@@ -20,7 +20,7 @@ Observe que esta é uma arquitetura de rede VPC de 3 níveis. Contamos com o mó
 
 Aqui está o que você vai criar neste laboratório!
 
-imagem
+![](imagens/Diagrama-de-arquitetura.png)
 
 ## Pré-requisitos
 
@@ -47,9 +47,11 @@ https://code.visualstudio.com/download
 
 - Você também precisa criar uma zona hospedada no Route53 para o domínio acima na mesma conta AWS e obter as informações de registro do NS a partir daí.
 
-imagem
+![](imagens/Route-53.png)
 
 - Em seguida, vá para as configurações do seu domínio e atualize seus servidores de nome para direcionar o tráfego para o Route53 da sua conta AWS.
+
+![](imagens/DNS.png)
 
 ## Armazenamento de estado remoto com S3 e DynamoDB
 
@@ -57,38 +59,38 @@ imagem
 
 - O estado terraform (arquivo "terraform.tfstate") também pode ser armazenado remotamente. Neste laboratório, você precisa criar um Bucket S3 com antecedência para armazenar o arquivo estatal da seguinte forma:
 
-...sh
+```sh
 Bucket name: devops-projects-infra-test
 Region: US-East (N.Virginia) us-east-1
 Bucket Versioning: Enable
 Create folder: dev/devops-01
-...
+```
 
 - Em seguida, crie uma tabela Dínamo DB que é usada para bloqueio de estado:
 
-...
+```sh
 Table Name: dev-devops-01
 Partition key (Primary Key): LockID (Type as String)
-...
+```
 
 ## Confira o código-fonte
 
 - Aqui está o código fonte para conferir:
 
-...sh
+```sh
 $ cd somewhere/on/your/pc
 $ git clone https://github.com/efcunha/devops-labs.git
 $ cd 01-terraform-aws-3tier/terraform/
-...
+```
 
 - Porque você terá um domínio de teste diferente, então você precisará modificar algum código para se adequar ao seu ambiente:
 
-...
+```sh
 # File t06-02-datasource-route53-zone.tf
   name   = "your-domain.com"
 
 # File t11-acm-certificatemanager.tf
-    "*.your-domain.com" # change this!
+  *.your-domain.com" # change this!
 
 # File t12-route53-dnsregistration.tf
   name    = "devops01.your-domain.com" # change this!
@@ -97,19 +99,19 @@ $ cd 01-terraform-aws-3tier/terraform/
   endpoint  = "someone@domain.com" # change this! (to your email)
 
 # File my-canary/nodejs/node_modules/my-canary.js
-    const urls = ['https://devops01.your-domain.com']; // change this!
-...
+  const urls = ['https://devops01.your-domain.com']; // change this!
+```
 
 - Depois de mudar meu canário.js, você precisa re-executar o seguinte comando:
 
-...sh
+```sh
 cd my-canary
 zip -r my-canaryv1.zip nodejs
-...
+```
 
 - Em seguida, você precisa criar um par-chave chamado "chave terraform" em sua conta AWS (usado para fazer login na sua instância EC2 mais tarde):
 
-...sh
+```sh
 $ cd private-key/
 
 $ ssh-keygen -f terraform-key.pem -y | pbcopy
@@ -117,7 +119,7 @@ $ ssh-keygen -f terraform-key.pem -y | pbcopy
 # Go to EC2 -> Key pairs -> Import key pair
 # and follow the guide.
 # Remember the key pair's name is "terraform-key".
-...
+```
 
 ## Parabéns! Agora tudo deve estar pronto.
 
@@ -129,11 +131,11 @@ $ ssh-keygen -f terraform-key.pem -y | pbcopy
 
 É seguro executar este comando várias vezes.
 
-...sh
+```sh
 $ terraform init
 
 Terraform has been successfully initialized!
-...
+```
 
 ## Terraform validate
 
@@ -141,11 +143,10 @@ Terraform has been successfully initialized!
 
 - É seguro executar este comando automaticamente, por exemplo, como uma verificação pós-salvamento em um editor de texto ou como um passo de teste para um módulo reutilizável em um sistema DE CI.
 
-...sh
+```sh
 $ terraform validate
 Success! The configuration is valid.
-
-...
+```
 
 ## Terraform plan
 
@@ -159,7 +160,7 @@ Success! The configuration is valid.
 
 - No caso padrão, sem nenhum arquivo de plano salvo, a terraform aplica cria seu próprio plano de ação, da mesma forma que o "plano terraform" faria.
 
-...sh
+```sh
 $ terraform apply
 
 Do you want to perform these actions?
@@ -170,7 +171,7 @@ Enter a value: yes
 
 Apply complete! Resources: 96 added, 0 changed, 0 destroyed.
 Outputs:
-...
+```
 
 ## Explorar e confirmar os recursos da AWS
 
@@ -190,21 +191,21 @@ https://devops01.your-domain.com/app1/metadata.html
 
 - Baixe o arquivo de estado remoto, se necessário:
 
-...
+```sh
 $ terraform state pull
-...
+```
 
 # Faça login na instância Bastião:
 
-...
+```sh
 $ ssh -i private-key/terraform-key.pem ec2-user@BastionHost-Public IPv4
-...
+```
 
 ## Limpar Instalação
 
 - Destruir todos os objetos remotos gerenciados por uma configuração terraform.
 
-...
+```sh
 $ terraform destroy
 
 Acquiring state lock. This may take a few moments...
@@ -217,25 +218,25 @@ Enter a value: yes
 
 Releasing state lock. This may take a few moments...
 Destroy complete! Resources: 98 destroyed.
-...
+```
 
 ## Alguns recursos AWS que você tem que excluir manualmente:
 
-...
+```sh
 CloudWatch > Log groups
 CloudWatch > Alarms
 Lambda > Functions
 S3 bucket, DynamoDB
-...
+```
 
 - e também os seguintes arquivos locais:
 
 ## Delete Files
 
-...
+```sh
 rm -rf .terraform*
 rm -rf terraform.tfstate*
-...
+```
 
 ## Conclusão
 
