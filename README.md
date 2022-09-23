@@ -177,11 +177,11 @@ Outputs:
 
 - Verifique seu e-mail para a assinatura do SNS
 - Instâncias EC2 (1 bastião e 2 servidores web)
-- Grupos de escala automática (e modelo de lançamento)
-- Balanceadores de carga
-- Grupos-alvo (e verificações de saúde)
-- Alarme CloudWatch
-  ALB, Alarme ASG, Alarmes CIS, Sintéticos
+- Auto Scaling Groups (and Launch template)
+- Load Balancers
+- Target Groups (and Health checks)
+- CloudWatch
+  ALB Alarm, ASG Alarm, CIS Alarms, Synthetics
 
 - Acesse o domínio do serviço:
 
