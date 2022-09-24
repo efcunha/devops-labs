@@ -86,7 +86,7 @@ Partition key (Primary Key): LockID (Type as String)
 ```sh
 $ cd sua-pasta/do/seu/pc
 $ git clone https://github.com/efcunha/devops-labs.git
-$ cd devops-labs/terraform-aws/terraform/
+$ cd devops-labs/terraform-aws/
 ```
 
 - Porque você terá um domínio de teste diferente, então você precisará modificar algum código para se adequar ao seu ambiente:
