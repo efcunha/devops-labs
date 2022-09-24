@@ -19,7 +19,7 @@ module "loadbalancer_sg" {
       from_port   = 81
       to_port     = 81
       protocol    = 6
-      description = "Allow Port 81 from internet"
+      description = "Permitir a porta 81 da internet"
       cidr_blocks = "0.0.0.0/0"
     },
   ]
