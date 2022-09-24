@@ -115,7 +115,7 @@ module "autoscaling" {
   credit_specification = {
     cpu_credits = "standard"
   }
-  
+
   instance_market_options = {
     market_type = "spot"
   }
@@ -127,7 +127,7 @@ module "autoscaling" {
     http_put_response_hop_limit = 32
     instance_metadata_tags      = "enabled"
   }
- 
+
   tag_specifications = [
     {
       resource_type = "instance"

@@ -4,8 +4,8 @@ resource "aws_iam_policy" "cw_canary_iam_policy" {
   path        = "/"
   description = "CloudWatch Canary Synthetic IAM Policy"
 
-   # A função "jsonencode" do Terraform converte um
-   # Resultado da expressão Terraform para sintaxe JSON válida.
+  # A função "jsonencode" do Terraform converte um
+  # Resultado da expressão Terraform para sintaxe JSON válida.
   policy = jsonencode({
     "Version" : "2012-10-17",
     "Statement" : [
