@@ -1,4 +1,4 @@
-## [DevOps] 01 - Projeto de exemplo com Terraform
+## [DevOps] - Projeto de exemplo com Terraform
 
 ## Visão geral
 
