@@ -6,13 +6,8 @@ module "alb" {
   name               = "${local.name}-alb"
   load_balancer_type = "application"
   vpc_id             = module.vpc.vpc_id
-  /*Option-1: Give as list with specific subnets or in next line, pass all public subnets 
-  subnets = [
-    module.vpc.public_subnets[0],
-    module.vpc.public_subnets[1]
-  ]*/
-  subnets         = module.vpc.public_subnets
-  security_groups = [module.loadbalancer_sg.security_group_id]
+  subnets            = module.vpc.public_subnets
+  security_groups    = [module.loadbalancer_sg.security_group_id]
 
   # Listeners
   # HTTP Listener - HTTP to HTTPS Redirect
@@ -50,18 +45,6 @@ module "alb" {
         matcher             = "200-399"
       }
       protocol_version = "HTTP1"
-      /* # App1 Target Group - Targets
-      targets = {
-        my_app1_vm1 = {
-          target_id = module.ec2_private_app1.id[0]
-          port      = 80
-        },
-        my_app1_vm2 = {
-          target_id = module.ec2_private_app1.id[1]
-          port      = 80
-        }
-      }
-      tags =local.common_tags # Target Group Tags*/
     },
   ]
 

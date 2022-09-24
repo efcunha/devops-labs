@@ -1,36 +1,36 @@
 # Terraform AWS Application Load Balancer (ALB) Outputs
 output "lb_id" {
-  description = "The ID and ARN of the load balancer we created."
+  description = "O ID e o ARN do balanceador de carga que criamos."
   value       = module.alb.lb_id
 }
 
 output "lb_arn" {
-  description = "The ID and ARN of the load balancer we created."
+  description = "O ID e o ARN do balanceador de carga que criamos."
   value       = module.alb.lb_arn
 }
 
 output "lb_dns_name" {
-  description = "The DNS name of the load balancer."
+  description = "O nome DNS do balanceador de carga."
   value       = module.alb.lb_dns_name
 }
 
 output "lb_arn_suffix" {
-  description = "ARN suffix of our load balancer - can be used with CloudWatch."
+  description = "Sufixo ARN do nosso balanceador de carga - pode ser usado com o CloudWatch."
   value       = module.alb.lb_arn_suffix
 }
 
 output "lb_zone_id" {
-  description = "The zone_id of the load balancer to assist with creating DNS records."
+  description = "O zone_id do balanceador de carga para auxiliar na criação de registros DNS."
   value       = module.alb.lb_zone_id
 }
 
 output "http_tcp_listener_arns" {
-  description = "The ARN of the TCP and HTTP load balancer listeners created."
+  description = "O ARN dos listeners do balanceador de carga TCP e HTTP criados."
   value       = module.alb.http_tcp_listener_arns
 }
 
 output "http_tcp_listener_ids" {
-  description = "The IDs of the TCP and HTTP load balancer listeners created."
+  description = "Os IDs dos listeners do balanceador de carga TCP e HTTP criados."
   value       = module.alb.http_tcp_listener_ids
 }
 
@@ -40,7 +40,7 @@ output "https_listener_arns" {
 }
 
 output "https_listener_ids" {
-  description = "The IDs of the load balancer listeners created."
+  description = "Os ARNs dos listeners do balanceador de carga HTTPS criados."
   value       = module.alb.https_listener_ids
 }
 
@@ -50,16 +50,16 @@ output "target_group_arns" {
 }
 
 output "target_group_arn_suffixes" {
-  description = "ARN suffixes of our target groups - can be used with CloudWatch."
+  description = "ARNs dos grupos de destino. Útil para passar para seu grupo de Auto Scaling."
   value       = module.alb.target_group_arn_suffixes
 }
 
 output "target_group_names" {
-  description = "Name of the target group. Useful for passing to your CodeDeploy Deployment Group."
+  description = "Nome do grupo de destino. Útil para passar para seu grupo de implantação do CodeDeploy."
   value       = module.alb.target_group_names
 }
 
 output "target_group_attachments" {
-  description = "ARNs of the target group attachment IDs."
+  description = "ARNs dos IDs de anexo do grupo de destino."
   value       = module.alb.target_group_attachments
 }

@@ -17,16 +17,16 @@ resource "aws_cloudwatch_metric_alarm" "alb_4xx_errors" {
   dimensions = {
     LoadBalancer = module.alb.lb_arn_suffix
   }
-  alarm_description = "This metric monitors ALB HTTP 4xx errors and if they are above 100 in specified interval, it is going to send a notification email"
+  alarm_description = "Esta métrica monitora os erros do ALB HTTP 4xx e se estiverem acima de 100 no intervalo especificado, enviará um email de notificação"
   ok_actions        = [aws_sns_topic.myasg_sns_topic.arn]
   alarm_actions     = [aws_sns_topic.myasg_sns_topic.arn]
 }
 
-# Per AppELB Metrics
+# Por Métricas AppELB
 ## - HTTPCode_ELB_5XX_Count
 ## - HTTPCode_ELB_502_Count
 ## - TargetResponseTime
-# Per AppELB, per TG Metrics
+# Por AppELB, por TG Metrics
 ## - UnHealthyHostCount
 ## - HealthyHostCount
 ## - HTTPCode_Target_4XX_Count

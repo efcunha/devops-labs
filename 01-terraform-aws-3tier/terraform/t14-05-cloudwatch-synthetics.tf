@@ -41,7 +41,7 @@ resource "aws_iam_policy" "cw_canary_iam_policy" {
 # AWS IAM Role
 resource "aws_iam_role" "cw_canary_iam_role" {
   name        = "cw-canary-iam-role"
-  description = "CloudWatch Synthetics lambda execution role for running canaries"
+  description = "Função de execução lambda do CloudWatch Synthetics para execução de canários"
   path        = "/service-role/"
   #assume_role_policy  = data.aws_iam_policy_document.instance_assume_role_policy.json # (not shown)
   assume_role_policy  = "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"lambda.amazonaws.com\"},\"Action\":\"sts:AssumeRole\"}]}"
@@ -102,7 +102,7 @@ resource "aws_cloudwatch_metric_alarm" "synthetics_alarm_app1" {
   dimensions = {
     CanaryName = aws_synthetics_canary.my-canary.id
   }
-  alarm_description = "Synthetics alarm metric: SuccessPercent  LessThanThreshold 90"
+  alarm_description = "Métrica de alarme sintético: SuccessPercent LessThanThreshold 90"
   ok_actions        = [aws_sns_topic.myasg_sns_topic.arn]
   alarm_actions     = [aws_sns_topic.myasg_sns_topic.arn]
 }

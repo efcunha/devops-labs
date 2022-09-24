@@ -53,7 +53,7 @@ module "autoscaling" {
 
   # Launch template
   launch_template_name        = "${local.name}-complete"
-  launch_template_description = "Complete launch template example"
+  launch_template_description = "Exemplo de modelo de lançamento completo"
   update_default_version      = true
 
   image_id          = data.aws_ami.amzlinux2.id
@@ -67,7 +67,7 @@ module "autoscaling" {
   create_iam_instance_profile = true
   iam_role_name               = "${local.name}-complete"
   iam_role_path               = "/ec2/"
-  iam_role_description        = "Complete IAM role example"
+  iam_role_description        = "Exemplo de função do IAM completo"
   iam_role_tags = {
     CustomIamRole = "Yes"
   }
@@ -115,46 +115,19 @@ module "autoscaling" {
   credit_specification = {
     cpu_credits = "standard"
   }
-
-  # enclave_options = {
-  #   enabled = true # Cannot enable hibernation and nitro enclaves on same instance nor on T3 instance type
-  # }
-
-  # hibernation_options = {
-  #   configured = true # Root volume must be encrypted & not spot to enable hibernation
-  # }
-
+  
   instance_market_options = {
     market_type = "spot"
   }
 
   metadata_options = {
     http_endpoint = "enabled"
-    # http_tokens                 = "required" # need to change?
-    http_tokens                 = "optional" # At production grade you can change to "required", for our example if is optional we can get the content in metadata.html
+    # http_tokens                 = "required" # precisa mudar?
+    http_tokens                 = "optional" # No nível de produção você pode mudar para "required", para o nosso exemplo se for opcional podemos obter o conteúdo em metadata.html
     http_put_response_hop_limit = 32
     instance_metadata_tags      = "enabled"
   }
-
-  # network_interfaces = [
-  #   {
-  #     delete_on_termination = true
-  #     description           = "eth0"
-  #     device_index          = 0
-  #     security_groups       = [module.private_sg.security_group_id]
-  #   },
-  #   {
-  #     delete_on_termination = true
-  #     description           = "eth1"
-  #     device_index          = 1
-  #     security_groups       = [module.private_sg.security_group_id]
-  #   }
-  # ]
-
-  # placement = {
-  #   availability_zone = "${var.aws_region}b" # need to change? This must be reviewed!!
-  # }
-
+ 
   tag_specifications = [
     {
       resource_type = "instance"

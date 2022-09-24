@@ -29,7 +29,7 @@ resource "aws_cloudwatch_metric_alarm" "app1_asg_cwa_cpu" {
     AutoScalingGroupName = module.autoscaling.autoscaling_group_name
   }
 
-  alarm_description = "This metric monitors ec2 cpu utilization and triggers the ASG Scaling policy to scale-out if CPU is above 80%"
+  alarm_description = "Esta métrica monitora a utilização da CPU ec2 e aciona a política ASG Scaling para dimensionar se a CPU estiver acima de 80%"
 
   ok_actions = [aws_sns_topic.myasg_sns_topic.arn]
   alarm_actions = [

@@ -30,12 +30,12 @@ module "vpc" {
 
   # Additional Tags to Subnets
   public_subnet_tags = {
-    Type = "Public Subnets"
+    Type = "Sub-redes públicas"
   }
   private_subnet_tags = {
-    Type = "Private Subnets"
+    Type = "Sub-redes privadas"
   }
   database_subnet_tags = {
-    Type = "Private Database Subnets"
+    Type = "Sub-redes de banco de dados privado"
   }
 }
