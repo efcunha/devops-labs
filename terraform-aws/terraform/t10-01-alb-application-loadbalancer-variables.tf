@@ -1,2 +1,2 @@
-# Terraform AWS Application Load Balancer Variables
-# Placeholder file for AWS ALB Variables
+# Terraform AWS Application Load Balancer Variáveis
+# Arquivo de espaço reservado para variáveis do AWS ALB

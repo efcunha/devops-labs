@@ -1,5 +1,5 @@
-# AWS EC2 Instance Terraform Outputs
-# Public EC2 Instances - Bastion Host
+# Saídas do Terraform da instância AWS EC2
+# Instâncias EC2 públicas - Bastion Host
 
 ## ec2_bastion_public_instance_ids
 output "ec2_bastion_public_instance_ids" {

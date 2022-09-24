@@ -1,4 +1,4 @@
-# Terraform AWS Application Load Balancer (ALB) Outputs
+# Saídas do AWS Application Load Balancer (ALB) do Terraform
 output "lb_id" {
   description = "O ID e o ARN do balanceador de carga que criamos."
   value       = module.alb.lb_id

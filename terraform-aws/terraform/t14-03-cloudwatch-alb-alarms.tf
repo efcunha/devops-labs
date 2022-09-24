@@ -1,8 +1,8 @@
-# Define CloudWatch Alarms for ALB
+# Definir alarmes do CloudWatch para ALB
 
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_metric_alarm
 
-# Alert if HTTP 4xx errors are more than threshold value
+# Alerta se os erros HTTP 4xx forem maiores que o valor limite
 resource "aws_cloudwatch_metric_alarm" "alb_4xx_errors" {
   alarm_name          = "App1-ALB-HTTP-4xx-errors"
   comparison_operator = "GreaterThanThreshold"
@@ -12,7 +12,7 @@ resource "aws_cloudwatch_metric_alarm" "alb_4xx_errors" {
   namespace           = "AWS/ApplicationELB"
   period              = "120"
   statistic           = "Sum"
-  threshold           = "5" # Update real-world value like 100, 200 etc
+  threshold           = "5" # Atualize o valor do mundo real como 100, 200 etc. 
   treat_missing_data  = "missing"
   dimensions = {
     LoadBalancer = module.alb.lb_arn_suffix

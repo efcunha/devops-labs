@@ -1,11 +1,11 @@
-# AWS IAM Policy
+# Política de IAM da AWS
 resource "aws_iam_policy" "cw_canary_iam_policy" {
   name        = "cw-canary-iam-policy"
   path        = "/"
   description = "CloudWatch Canary Synthetic IAM Policy"
 
-  # Terraform's "jsonencode" function converts a
-  # Terraform expression result to valid JSON syntax.
+   # A função "jsonencode" do Terraform converte um
+   # Resultado da expressão Terraform para sintaxe JSON válida.
   policy = jsonencode({
     "Version" : "2012-10-17",
     "Statement" : [
@@ -38,7 +38,7 @@ resource "aws_iam_policy" "cw_canary_iam_policy" {
   })
 }
 
-# AWS IAM Role
+# Função do AWS IAM
 resource "aws_iam_role" "cw_canary_iam_role" {
   name        = "cw-canary-iam-role"
   description = "Função de execução lambda do CloudWatch Synthetics para execução de canários"
@@ -48,7 +48,7 @@ resource "aws_iam_role" "cw_canary_iam_role" {
   managed_policy_arns = [aws_iam_policy.cw_canary_iam_policy.arn]
 }
 
-# Create S3 Bucket
+# Criar bucket do S3
 resource "aws_s3_bucket" "cw_canary_bucket" {
   bucket = "cw-canary-bucket-${random_pet.this.id}"
   # acl           = "private"
@@ -87,7 +87,7 @@ resource "aws_synthetics_canary" "my-canary" {
   }
 }
 
-# AWS CloudWatch Metric Alarm for Synthetics Heart Beat Monitor when availability is less than 10 percent
+# AWS CloudWatch Metric Alarm for Synthetics Heart Beat Monitor quando a disponibilidade for inferior a 10 por cento
 resource "aws_cloudwatch_metric_alarm" "synthetics_alarm_app1" {
   alarm_name          = "Synthetics-Alarm-App1"
   comparison_operator = "LessThanThreshold"

@@ -1,20 +1,20 @@
-# Autoscaling Notifications
-## AWS Bug for SNS Topic: https://stackoverflow.com/questions/62694223/cloudwatch-alarm-pending-confirmation
-## Due to that create SNS Topic with unique name 
+# Notificações de escalonamento automático
+## Bug da AWS para tópico SNS: https://stackoverflow.com/questions/62694223/cloudwatch-alarm-pending-confirmation
+## Devido a isso, crie um tópico SNS com nome exclusivo
 
-## SNS - Topic
+## SNS - Tópico
 resource "aws_sns_topic" "myasg_sns_topic" {
   name = "myasg-sns-topic-${random_pet.this.id}"
 }
 
-## SNS - Subscription
+## SNS - Assinatura
 resource "aws_sns_topic_subscription" "myasg_sns_topic_subscription" {
   topic_arn = aws_sns_topic.myasg_sns_topic.arn
   protocol  = "email"
   endpoint  = "efcunha@edsoncunha.eti.br" # change this!
 }
 
-## Create Autoscaling Notification Resource
+## Criar recurso de notificação de escalonamento automático
 resource "aws_autoscaling_notification" "myasg_notifications" {
   group_names = [module.autoscaling.autoscaling_group_id]
   notifications = [

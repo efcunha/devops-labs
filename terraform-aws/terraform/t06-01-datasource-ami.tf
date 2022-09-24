@@ -1,4 +1,4 @@
-# Get latest AMI ID for Amazon Linux2 OS
+# Obtenha o ID da AMI mais recente para o sistema operacional Amazon Linux 2
 data "aws_ami" "amzlinux2" {
   most_recent = true
   owners      = ["amazon"]

@@ -1,8 +1,8 @@
-# Define CloudWatch Alarms for Autoscaling Groups
+# Definir alarmes do CloudWatch para grupos de escalonamento automático
 
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_policy
 
-# Autoscaling - Scaling Policy for High CPU
+# Autoscaling - Política de escalonamento para alta CPU
 resource "aws_autoscaling_policy" "high_cpu" {
   name                   = "high-cpu"
   scaling_adjustment     = 2
@@ -13,8 +13,8 @@ resource "aws_autoscaling_policy" "high_cpu" {
 
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_metric_alarm
 
-# Cloud Watch Alarm to trigger the above scaling policy when CPU Utilization is above 80%
-# Also send the notificaiton email to users present in SNS Topic Subscription
+# Cloud Watch Alarm para acionar a política de dimensionamento acima quando a utilização da CPU estiver acima de 80%
+# Envie também o e-mail de notificação para os usuários presentes na Assinatura do Tópico do SNS
 resource "aws_cloudwatch_metric_alarm" "app1_asg_cwa_cpu" {
   alarm_name          = "App1-ASG-CWA-CPUUtilization"
   comparison_operator = "GreaterThanOrEqualToThreshold"

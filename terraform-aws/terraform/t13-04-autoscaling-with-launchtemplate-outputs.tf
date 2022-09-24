@@ -1,4 +1,4 @@
-# Launch template Outputs
+# Lançamento de saídas do template
 output "launch_template_id" {
   description = "O ID do modelo de lançamento"
   value       = module.autoscaling.launch_template_id

@@ -1,9 +1,9 @@
-# AWS EC2 Instance Terraform Module
-# Bastion Host - EC2 Instance that will be created in VPC Public Subnet
+# Módulo do AWS EC2 Instance Terraform
+# Bastion Host - Instância do EC2 que será criada na VPC Public Subnet
 module "ec2_public" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = "3.4.0"
-  # insert the 10 required variables here
+  # insira as 10 variáveis necessárias aqui
   name = "${var.environment}-BastionHost"
   # instance_count         = 5
   ami           = data.aws_ami.amzlinux2.id

@@ -1,4 +1,4 @@
-# Define Local Values in Terraform
+# Definir valores locais no Terraform
 locals {
   owners      = var.business_divsion
   environment = var.environment

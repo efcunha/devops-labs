@@ -1,6 +1,6 @@
-# AWS EC2 Security Group Terraform Outputs
+# Saídas do Terraform do AWS EC2 Security Group
 
-# Public Bastion Host Security Group Outputs
+# Saídas do Grupo de Segurança do Host Bastion Público
 ## public_bastion_sg_group_id
 output "public_bastion_sg_group_id" {
   description = "O ID do grupo de segurança"
@@ -19,7 +19,7 @@ output "public_bastion_sg_group_name" {
   value       = module.public_bastion_sg.security_group_name
 }
 
-# Private EC2 Instances Security Group Outputs
+# Saídas privadas do grupo de segurança de instâncias EC2
 ## private_sg_group_id
 output "private_sg_group_id" {
   description = "O ID do grupo de segurança"

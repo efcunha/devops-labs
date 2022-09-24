@@ -1,9 +1,9 @@
-# Create Log Group for CIS
+# Criar grupo de log para CIS
 resource "aws_cloudwatch_log_group" "cis_log_group" {
   name = "cis-log-group-${random_pet.this.id}"
 }
 
-# Define CIS Alarms
+# Definir alarmes CIS
 module "all_cis_alarms" {
   source  = "terraform-aws-modules/cloudwatch/aws//modules/cis-alarms"
   version = "3.2.0"

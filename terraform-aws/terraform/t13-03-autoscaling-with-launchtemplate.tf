@@ -1,4 +1,4 @@
-# Please check the following source for the original source code
+# Por favor, verifique a seguinte fonte para o código fonte original
 # https://github.com/terraform-aws-modules/terraform-aws-autoscaling/blob/v6.5.0/examples/complete/main.tf
 
 module "autoscaling" {
@@ -51,7 +51,7 @@ module "autoscaling" {
     triggers = ["tag", "desired_capacity"] # Desired Capacity here added for demostrating the Instance Refresh scenario
   }
 
-  # Launch template
+  # Lançar template
   launch_template_name        = "${local.name}-complete"
   launch_template_description = "Exemplo de modelo de lançamento completo"
   update_default_version      = true
@@ -75,7 +75,7 @@ module "autoscaling" {
     AmazonSSMManagedInstanceCore = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
   }
 
-  # Security group is set on the ENIs below
+  # O grupo de segurança está definido nos ENIs abaixo
   security_groups = [module.private_sg.security_group_id]
 
   target_group_arns = module.alb.target_group_arns
@@ -145,7 +145,7 @@ module "autoscaling" {
 
   tags = local.common_tags
 
-  # Autoscaling Schedule
+  # Agendamento de escalonamento automático
   schedules = {
     morning = {
       scheduled_action_name = "increase-capacity-9am"
@@ -167,7 +167,7 @@ module "autoscaling" {
     }
   }
 
-  # Target scaling policy schedule based on average CPU load
+  # Agendamento de política de dimensionamento de destino com base na carga média da CPU
   scaling_policies = {
     avg-cpu-policy-greater-than-50 = {
       policy_type               = "TargetTrackingScaling"

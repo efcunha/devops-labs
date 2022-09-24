@@ -1,4 +1,4 @@
-# Generic Variables
+# Variáveis Genéricas
 aws_region       = "us-east-1"
 environment      = "stag"
 business_divsion = "hr"

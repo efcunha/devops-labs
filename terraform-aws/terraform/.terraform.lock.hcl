@@ -1,5 +1,5 @@
-# This file is maintained automatically by "terraform init".
-# Manual edits may be lost in future updates.
+# Este arquivo é mantido automaticamente pelo "terraform init".
+# Edições manuais podem ser perdidas em atualizações futuras.
 
 provider "registry.terraform.io/hashicorp/aws" {
   version     = "4.16.0"

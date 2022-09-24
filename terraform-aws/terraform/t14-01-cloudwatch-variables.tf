@@ -1,2 +1,2 @@
-# AWS CloudWatch Input Variables
-# Placeholder file for AWS CloudWatch Input Variables
+# Variáveis de entrada do AWS CloudWatch
+# Arquivo de espaço reservado para variáveis de entrada do AWS CloudWatch

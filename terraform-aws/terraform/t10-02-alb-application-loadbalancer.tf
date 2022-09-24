@@ -10,7 +10,7 @@ module "alb" {
   security_groups    = [module.loadbalancer_sg.security_group_id]
 
   # Listeners
-  # HTTP Listener - HTTP to HTTPS Redirect
+  # HTTP Listener - Redirecionamento HTTP para HTTPS
   http_tcp_listeners = [
     {
       port        = 80
@@ -24,7 +24,7 @@ module "alb" {
     }
   ]
 
-  # Target Groups
+  # Grupos-alvo
   target_groups = [
     # App1 Target Group - TG Index = 0
     {

@@ -1,4 +1,4 @@
-# DNS Registration 
+# Registro DNS
 resource "aws_route53_record" "apps_dns" {
   zone_id = data.aws_route53_zone.mydomain.zone_id
   name    = "devops01.edson-devops.eti.br" # change this!
